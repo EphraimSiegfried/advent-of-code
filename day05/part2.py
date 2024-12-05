@@ -5,14 +5,9 @@ from functools import cmp_to_key
 class DirectedGraph(DirectedGraph):
     def find_path(self, p):
         def compare(x, y):
-            if x == y:
-                return 0
-            elif y in self._graph[x]:
-                return 1
-            else:
-                return -1
+            return -1 if y in self._graph[x] else 1
 
-        return sorted(p, key=cmp_to_key(compare), reverse=True)
+        return sorted(p, key=cmp_to_key(compare))
 
 
 if __name__ == "__main__":
