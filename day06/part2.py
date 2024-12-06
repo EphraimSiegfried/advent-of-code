@@ -2,12 +2,12 @@ from part1 import find_start, parse_input, move, pretty_print
 import copy
 
 
-def is_loopy(mapp, x, y):
-    mapp = copy.deepcopy(map)
-    mapp[x][y] = "#"
-    num_cols = len(mapp[0])
-    num_rows = len(mapp)
-    x, y = find_start(mapp)
+def is_loopy(map, x, y):
+    map = copy.deepcopy(map)
+    map[x][y] = "#"
+    num_cols = len(map[0])
+    num_rows = len(map)
+    x, y = find_start(map)
     direction = 0
     in_bounds = lambda x, y: 0 <= x < num_cols and 0 <= y < num_rows
     visited = set()
@@ -18,7 +18,7 @@ def is_loopy(mapp, x, y):
         x, y = move(direction, x, y)
         if not in_bounds(x, y):
             break
-        if mapp[y][x] == "#":
+        if map[y][x] == "#":
             node = (x,y,direction)
             if node in visited:
                 return True
