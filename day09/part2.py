@@ -13,12 +13,13 @@ if __name__ == "__main__":
         s = explicit_map.index(id)
         for i in range(s):
             if explicit_map[i : i + file_lengths[id]] == ["."] * file_lengths[id]:
+                # swap
                 (
                     explicit_map[i : i + file_lengths[id]],
                     explicit_map[s : s + file_lengths[id]],
                 ) = (
-                    explicit_map[i : i + file_lengths[id]],
                     explicit_map[s : s + file_lengths[id]],
+                    explicit_map[i : i + file_lengths[id]],
                 )
                 break
     checksum = sum([i * id if id != "." else 0 for i, id in enumerate(explicit_map)])
