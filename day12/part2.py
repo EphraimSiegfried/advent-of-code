@@ -5,7 +5,7 @@ from part1 import explore, parse_input
 def pos_to_map(positions):
     max_row = max(pos[0] for pos in positions) + 1
     max_col = max(pos[1] for pos in positions) + 1
-    matrix = np.zeros((max_row, max_col), dtype=int)
+    matrix = np.zeros((max_row, max_col), dtype=bool)
     for row, col in positions:
         matrix[row, col] = 1
     return matrix
@@ -23,13 +23,10 @@ def count_edges(map: np.ndarray):
         if row > num_rows or col > num_cols:
             continue
         frame = padded[row : row + 2, col : col + 2]
-        # print(frame)
-        num_edges += (
-            np.sum(frame) == 1
-            or np.sum(frame) == 3
-            or np.all(np.eye(2) == frame)
-            or np.all(np.flip(np.eye(2), 1) == frame)
-        )
+        if np.all(np.eye(2) == frame) or np.all(np.flip(np.eye(2), 1) == frame):
+            num_edges += 2
+
+        num_edges += np.sum(frame) == 1 or np.sum(frame) == 3
     return num_edges
 
 
