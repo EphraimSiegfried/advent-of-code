@@ -15,11 +15,12 @@
         default = pkgs.mkShell {
           venvDir = ".venv";
           shellHook = "zsh";
-          packages = with pkgs; [ python311 ] ++
-            (with pkgs.python311Packages; [
+          packages = with pkgs; [ python312 ] ++
+            (with pkgs.python312Packages; [
               pip
               venvShellHook
-	      numpy
+              numpy
+              pillow
             ]);
         };
       });
