@@ -20,15 +20,13 @@ if __name__ == "__main__":
     num_cols = 101
     num_rows = 103
 
-    s = []
+    cluster_sizes = []
     for i in range(50000):
         positions = simulate(positions, velocities, 1)
         index = randint(0, len(positions) - 1)
         area, _, _ = explore(positions[index], pos_to_map(positions))
-        s.append(area)
-    i = argmax(s)
-    print(s)
-    print(i, max(s))
+        cluster_sizes.append(area)
+    i = argmax(cluster_sizes)
 
     positions, velocities = parse_input("input.txt")
     create_image(simulate(positions, velocities, i + 1), f"frame-{i+1}.png")
