@@ -1,0 +1,9 @@
+[package]
+name = "aoc_2023"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] } 
+itertools = "0.13"
+regex = "1.10"
