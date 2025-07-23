@@ -43,6 +43,11 @@ pub fn solve(day: u8, part: u8, input: &str) -> String {
             2 => day07::part2(input),
             _ => "Invalid part".to_string(),
         },
+        8 => match part {
+            1 => day08::part1(input),
+            2 => day08::part2(input),
+            _ => "Invalid part".to_string(),
+        },
         _ => "Day not yet implemented".to_string(),
     }
 }
