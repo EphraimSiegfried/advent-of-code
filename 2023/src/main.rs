@@ -1,6 +1,7 @@
 use aoc_2023::solve;
 use clap::Parser;
 use std::fs;
+pub mod util;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -19,5 +20,8 @@ fn main() {
         .unwrap_or_else(|_| panic!("Could not read input file: {}", &input_path));
 
     let solution = solve(args.day, args.part, &input);
-    println!("Solution for Day {}, Part {}: {}", args.day, args.part, solution);
+    println!(
+        "Solution for Day {}, Part {}: {}",
+        args.day, args.part, solution
+    );
 }
