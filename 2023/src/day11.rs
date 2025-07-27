@@ -1,4 +1,4 @@
-use std::{result, usize};
+use std::usize;
 
 use itertools::Itertools;
 type Grid = Vec<Vec<char>>;
