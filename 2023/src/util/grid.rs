@@ -45,4 +45,26 @@ impl Grid {
             print!("\n");
         }
     }
+    pub fn columns(&self) -> impl Iterator<Item = Vec<char>> + '_ {
+        if self.mat.is_empty() || self.mat[0].is_empty() {
+            // Return an empty iterator for an empty or malformed grid
+            return Vec::new().into_iter();
+        }
+
+        let num_rows = self.mat.len();
+        let num_cols = self.mat[0].len();
+
+        (0..num_cols)
+            .map(move |col_idx| {
+                (0..num_rows)
+                    .map(|row_idx| self.mat[row_idx][col_idx])
+                    .collect::<Vec<char>>() // Collect inner iterator into a Vec<char>
+            })
+            .collect::<Vec<Vec<char>>>() // Collect the outer iterator into a Vec<Vec<char>>
+            .into_iter() // Convert the Vec<Vec<char>> into an iterator
+    }
+
+    pub fn rows(&self) -> impl Iterator<Item = &Vec<char>> + '_ {
+        self.mat.iter()
+    }
 }
