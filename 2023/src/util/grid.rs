@@ -12,7 +12,7 @@ impl Grid {
     }
 
     pub fn at(&self, row_idx: usize, col_idx: usize) -> Option<char> {
-        if !self.in_bounds(row_idx, col_idx) {
+        if !self.in_bounds(row_idx as i32, col_idx as i32) {
             return None;
         }
         Some(self.mat[row_idx as usize][col_idx as usize])
@@ -34,10 +34,13 @@ impl Grid {
         result
     }
 
-    pub fn in_bounds(&self, row_idx: usize, col_idx: usize) -> bool {
+    pub fn in_bounds(&self, row_idx: i32, col_idx: i32) -> bool {
         let num_rows = self.mat.len();
         let num_cols = self.mat[0].len();
-        row_idx < num_rows && col_idx < num_cols
+        0 <= row_idx
+            && (row_idx as usize) < num_rows
+            && 0 <= col_idx
+            && (col_idx as usize) < num_cols
     }
 
     pub fn print(&self) {
