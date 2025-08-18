@@ -14,6 +14,7 @@ pub mod day13;
 pub mod day14;
 pub mod day15;
 pub mod day16;
+pub mod day17;
 pub mod util;
 
 pub fn solve(day: u8, part: u8, input: &str) -> String {
@@ -96,6 +97,11 @@ pub fn solve(day: u8, part: u8, input: &str) -> String {
         16 => match part {
             1 => day16::part1(input),
             2 => day16::part2(input),
+            _ => "Invalid part".to_string(),
+        },
+        17 => match part {
+            1 => day17::part1(input),
+            2 => day17::part2(input),
             _ => "Invalid part".to_string(),
         },
         _ => "Day not yet implemented".to_string(),
